@@ -20,7 +20,6 @@
 <body class="bg-[#f3f4f6] font-sans min-h-screen flex">
 
     <aside class="w-64 bg-indigo-600 text-white flex flex-col min-h-screen shrink-0 shadow-lg">
-        <!-- En-tête avec logo abstrait -->
         <div class="p-6 flex items-center gap-3">
             <div class="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center border border-white/30">
                 <i class="fa-solid fa-shapes text-white/80 text-lg"></i>
@@ -28,7 +27,6 @@
             <span class="text-xl font-bold tracking-wide">Gestion_Blog</span>
         </div>
 
-        <!-- Liens de navigation du menu -->
         <nav class="flex-grow p-4 space-y-1 mt-6">
             <a href="#"
                 class="flex items-center gap-4 px-4 py-3 bg-white/10 rounded-lg font-semibold transition text-white">
@@ -42,18 +40,15 @@
         </nav>
     </aside>
 
-    <!-- CONTAINER DU CONTENU DE DROITE -->
     <div class="flex-grow flex flex-col min-w-0">
 
         <header class="bg-indigo-500 px-8 py-4 flex justify-between items-center shadow-md">
-            <!-- Zone de recherche -->
             <div class="relative w-96">
                 <input type="text" placeholder="search"
                     class="w-full bg-white text-gray-800 rounded-md pl-4 pr-10 py-1.5 text-sm focus:outline-none shadow-inner placeholder-gray-400">
                 <i class="fa-solid fa-magnifying-glass absolute right-4 top-2.5 text-gray-500 text-sm"></i>
             </div>
 
-            <!-- Profil & Options -->
             <div class="flex items-center gap-5 text-white">
                 <button class="hover:text-indigo-200 transition text-lg"><i class="fa-solid fa-sun"></i></button>
                 <button class="hover:text-indigo-200 transition text-lg"><i class="fa-solid fa-moon"></i></button>
@@ -68,7 +63,6 @@
 
         <main class="p-8 space-y-6">
 
-            <!-- BLOC BIENVENUE MOUSSA -->
             <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 flex justify-between items-center relative overflow-hidden">
                 <div class="space-y-2 z-10">
                     <h2 class="text-2xl font-bold text-gray-900">Bienvenue Moussa</h2>
@@ -79,13 +73,11 @@
                         </button>
                     </div>
                 </div>
-                <!-- Illustration bonhomme de droite -->
                 <div class="hidden md:block w-36 h-28 mr-6 text-indigo-200 shrink-0">
                     <svg viewBox="0 0 200 150" fill="none" stroke="currentColor" stroke-width="2" class="text-gray-300">
                         <!-- Bureau / Écran -->
                         <path d="M20,130 L180,130" stroke-width="4" stroke="currentColor" class="text-gray-400" />
                         <path d="M40,130 L50,100 L110,100 L100,130" />
-                        <!-- Personnage simplifié -->
                         <circle cx="130" cy="50" r="18" fill="#f3f4f6" />
                         <path d="M110,110 C110,80 150,80 150,110 Z" fill="#e0e7ff" />
                         <path d="M125,68 L125,90" stroke="currentColor" stroke-width="3" />
@@ -93,10 +85,8 @@
                 </div>
             </div>
 
-            <!-- GRILLE DES 4 CARTES STATISTIQUES AVEC PROGRESSION -->
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                 
-                <!-- Carte 1 : Articles en Lignes -->
                 <div class="bg-white rounded-2xl p-5 shadow-sm border border-gray-100 flex flex-col justify-between h-32">
                     <div>
                         <div class="flex items-center gap-2 text-[10px] font-bold text-gray-800">
@@ -112,7 +102,6 @@
                     </div>
                 </div>
 
-                <!-- Carte 2 : Vues de mes Articles -->
                 <div class="bg-white rounded-2xl p-5 shadow-sm border border-gray-100 flex flex-col justify-between h-32">
                     <div>
                         <div class="flex items-center gap-2 text-[10px] font-bold text-gray-800">
@@ -128,7 +117,6 @@
                     </div>
                 </div>
 
-                <!-- Carte 3 : Nouveaux Commentaires -->
                 <div class="bg-white rounded-2xl p-5 shadow-sm border border-gray-100 flex flex-col justify-between h-32">
                     <div>
                         <div class="flex items-center gap-2 text-[10px] font-bold text-gray-800">
@@ -144,7 +132,6 @@
                     </div>
                 </div>
 
-                <!-- Carte 4 : En attente de l'Admin -->
                 <div class="bg-white rounded-2xl p-5 shadow-sm border border-gray-100 flex flex-col justify-between h-32">
                     <div>
                         <div class="flex items-center gap-2 text-[10px] font-bold text-gray-800">
@@ -161,8 +148,6 @@
                 </div>
             </div>
 
-            <!-- ENCADRÉ BLEU : TABLEAU DES DERNIERS ARTICLES -->
-                        <!-- TABLEAU ÉPURÉ : MES DERNIERS ARTICLES SOUMIS -->
             <div class="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
                 <h4 class="text-xl font-bold text-gray-900 mb-6 px-2">Mes derniers Articles soumis</h4>
                 
@@ -179,7 +164,6 @@
                         </thead>
                         <tbody class="divide-y divide-gray-200 text-sm text-gray-700">
                             
-                            <!-- Ligne 1 : Publier (Vert Fluo Texte Noir) -->
                             <tr class="hover:bg-gray-50/50 transition">
                                 <td class="p-4 font-semibold text-gray-900">10 astuces de design UI</td>
                                 <td class="p-4 text-gray-550">Guidez l'œil avec des tailles</td>
@@ -190,7 +174,6 @@
                                 </td>
                             </tr>
 
-                            <!-- Ligne 2 : En attente (Orange Texte Blanc) -->
                             <tr class="hover:bg-gray-50/50 transition">
                                 <td class="p-4 font-semibold text-gray-900">10 astuces de design UI</td>
                                 <td class="p-4 text-gray-550">Guidez l'œil avec des tailles</td>
@@ -201,7 +184,6 @@
                                 </td>
                             </tr>
 
-                            <!-- Ligne 3 : Publier (Vert Fluo Texte Noir) -->
                             <tr class="hover:bg-gray-50/50 transition">
                                 <td class="p-4 font-semibold text-gray-900">10 astuces de design UI</td>
                                 <td class="p-4 text-gray-550">Guidez l'œil avec des tailles</td>

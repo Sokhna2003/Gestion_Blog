@@ -5,7 +5,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gestion_Blog - Dashboard</title>
-    <!-- Tailwind CSS -->
     <script src="https://tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <style type="text/tailwindcss">
@@ -17,7 +16,6 @@
     <!-- CDN FontAwesome officiel -->
     <link rel="stylesheet" href="https://cloudflare.com" />
     <style>
-        /* Styles pour simuler fidèlement les graphiques de fond sans bibliothèque externe */
         .wave-bg {
             background: linear-gradient(180deg, rgba(255, 255, 255, 0) 40%, rgba(255, 255, 255, 0.2) 100%);
             clip-path: polygon(0% 80%, 15% 65%, 30% 75%, 45% 50%, 60% 70%, 75% 45%, 90% 60%, 100% 30%, 100% 100%, 0% 100%);
@@ -37,7 +35,6 @@
 
 <body class="bg-[#f3f4f6] font-sans min-h-screen flex">
 
-    <!-- 1. BARRE LATÉRALE (Sidebar Violette) -->
     <aside class="w-64 bg-indigo-600 text-white flex flex-col min-h-screen shrink-0 shadow-lg">
         <!-- En-tête avec logo abstrait -->
         <div class="p-6 flex items-center gap-3">
@@ -72,10 +69,8 @@
         </nav>
     </aside>
 
-    <!-- CONTAINER DU CONTENU DE DROITE -->
     <div class="flex-grow flex flex-col min-w-0">
 
-        <!-- 2. BARRE SUPÉRIEURE (Topbar Violette) -->
         <header class="bg-indigo-500 px-8 py-4 flex justify-between items-center shadow-md">
             <!-- Zone de recherche -->
             <div class="relative w-96">
@@ -97,13 +92,10 @@
             </div>
         </header>
 
-        <!-- 3. ZONE DES MODULES (Main) -->
         <main class="p-8 space-y-6">
 
-            <!-- BLOC DES 4 CARTES STATISTIQUES -->
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
 
-                <!-- Carte 1 : Nombre Utilisateurs (Violette) -->
                 <div
                     class="bg-indigo-700 text-white rounded-xl p-5 shadow-md h-32 relative flex flex-col justify-between overflow-hidden">
                     <div>
@@ -116,7 +108,6 @@
                     <div class="absolute inset-x-0 bottom-0 h-12 wave-bg"></div>
                 </div>
 
-                <!-- Carte 2 : Articles en Attente (Blanche) -->
                 <div
                     class="bg-white text-gray-800 rounded-xl p-5 shadow-sm h-32 relative border border-gray-100 flex flex-col justify-between overflow-hidden">
                     <div>
@@ -129,7 +120,6 @@
                     <div class="absolute inset-x-0 bottom-0 h-12 wave-bg-light"></div>
                 </div>
 
-                <!-- Carte 3 : Commentaire Signalé (Violette) -->
                 <div
                     class="bg-indigo-700 text-white rounded-xl p-5 shadow-md h-32 relative flex flex-col justify-between overflow-hidden">
                     <div>
@@ -142,7 +132,6 @@
                     <div class="absolute inset-x-0 bottom-0 h-12 wave-bg"></div>
                 </div>
 
-                <!-- Carte 4 : Vues Globales (Blanche) -->
                 <div
                     class="bg-white text-gray-800 rounded-xl p-5 shadow-sm h-32 relative border border-gray-100 flex flex-col justify-between overflow-hidden">
                     <div>
@@ -156,7 +145,6 @@
                 </div>
             </div>
 
-            <!-- CENTRAL : GRAPHIOUE D'ACTIVITÉ -->
             <div class="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
                 <h4 class="text-lg font-bold text-gray-900 mb-6">Vue d'Ensemble de l'Activité</h4>
 
@@ -171,7 +159,6 @@
                         <span>0</span>
                     </div>
 
-                    <!-- Graphique ondulé -->
                     <div class="flex-grow border-l border-b border-gray-200 h-48 relative overflow-hidden">
                         <div class="absolute inset-x-0 top-0 border-t border-gray-100 h-0"></div>
                         <div class="absolute inset-x-0 top-12 border-t border-gray-100 h-0"></div>
@@ -182,7 +169,6 @@
                     </div>
                 </div>
 
-                <!-- Axe X -->
                 <div class="flex pl-14 justify-between text-[10px] text-gray-400 mt-2 select-none">
                     <span class="w-full text-center">Janvier</span>
                     <span class="w-full text-center">Février</span>
@@ -194,12 +180,10 @@
                 </div>
             </div>
 
-            <!-- 4. FILED DE MODÉRATION AVEC BORDURES VERTICALES -->
             <div class="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
                 <h4 class="text-lg font-bold text-gray-900 mb-5">File de Moderation Urgentes</h4>
                 <div class="space-y-3">
 
-                    <!-- Ligne 1 : Awa Fall -->
                     <div
                         class="flex items-center justify-between p-3 bg-gray-50 rounded-lg border-l-[3px] border-indigo-600 gap-4 shadow-sm">
                         <div class="flex items-center gap-4 min-w-0">
@@ -221,7 +205,6 @@
                         </div>
                     </div>
 
-                    <!-- Ligne 2 : Pape Ba -->
                     <div
                         class="flex items-center justify-between p-3 bg-gray-50 rounded-lg border-l-[3px] border-indigo-600 gap-4 shadow-sm">
                         <div class="flex items-center gap-4 min-w-0">
@@ -243,7 +226,6 @@
                         </div>
                     </div>
 
-                    <!-- Ligne 3 : Awa Fall -->
                     <div
                         class="flex items-center justify-between p-3 bg-gray-50 rounded-lg border-l-[3px] border-indigo-600 gap-4 shadow-sm">
                         <div class="flex items-center gap-4 min-w-0">
