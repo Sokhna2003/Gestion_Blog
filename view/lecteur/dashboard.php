@@ -4,7 +4,7 @@
     <div
         class="bg-white rounded-2xl p-8 shadow-sm border border-gray-100 flex justify-between items-center relative overflow-hidden min-h-[140px]">
         <div class="space-y-2 z-10">
-            <h2 class="text-3xl font-black text-gray-900 tracking-tight">Ravi de vous revoir, Fatou</h2>
+            <h2 class="text-3xl font-black text-gray-900 tracking-tight">Ravi de vous revoir</h2>
             <p class="text-base text-gray-400 font-medium">Retrouvez vos lectures en cours et vos articles
                 enregistrés.</p>
         </div>
@@ -21,7 +21,7 @@
                 </svg>
                 Articles Favoris
             </div>
-            <h3 class="text-3xl font-black text-gray-900 mt-2">12</h3>
+            <h3 class="text-3xl font-black text-gray-900 mt-2"><?= $totalFavoris ?></h3>
         </div>
 
         <div
@@ -64,29 +64,23 @@
                     </tr>
                 </thead>
                 <tbody class="divide-y divide-gray-200 text-sm text-gray-700">
-                    <tr class="hover:bg-gray-50/50 transition">
-                        <td class="p-4 font-semibold text-gray-900">10 astuces de design UI indispensables</td>
-                        <td class="p-4 text-gray-500">Design UI</td>
-                        <td class="p-4">12/06/2026</td>
-                        <td class="p-4 text-center">
-                            <button
-                                class="text-indigo-600 hover:text-indigo-800 font-bold transition mr-3 cursor-pointer">Lire</button>
-                            <button
-                                class="text-red-500 hover:text-red-700 font-medium transition cursor-pointer">Retirer</button>
-                        </td>
-                    </tr>
-                    <tr class="hover:bg-gray-50/50 transition">
-                        <td class="p-4 font-semibold text-gray-900">Maîtriser la réactivité avec Tailwind CSS v4
-                        </td>
-                        <td class="p-4 text-gray-500">Intégration</td>
-                        <td class="p-4">11/06/2026</td>
-                        <td class="p-4 text-center">
-                            <button
-                                class="text-indigo-600 hover:text-indigo-800 font-bold transition mr-3 cursor-pointer">Lire</button>
-                            <button
-                                class="text-red-500 hover:text-red-700 font-medium transition cursor-pointer">Retirer</button>
-                        </td>
-                    </tr>
+                    <?php if (empty($articles)): ?>
+                        <tr>
+                            <td colspan="4" class="p-4 text-center text-gray-500">Aucun article enregistré pour le moment.</td>
+                        </tr>
+                    <?php else: ?>
+                        <?php foreach ($articles as $art): ?>
+                            <tr class="hover:bg-gray-50/50 transition">
+                                <td class="p-4 font-semibold text-gray-900"><?= htmlspecialchars($art['titre']) ?></td>
+                                <td class="p-4 text-gray-500"><?= htmlspecialchars($art['categorie']) ?></td>
+                                <td class="p-4"><?= date('d/m/Y', strtotime($art['date_publication'])) ?></td>
+                                <td class="p-4 text-center">
+                                    <button class="text-indigo-600 hover:text-indigo-800 font-bold transition mr-3 cursor-pointer">Lire</button>
+                                    <button class="text-red-500 hover:text-red-700 font-medium transition cursor-pointer">Retirer</button>
+                                </td>
+                            </tr>
+                        <?php endforeach; ?>
+                    <?php endif; ?>
                 </tbody>
             </table>
         </div>
