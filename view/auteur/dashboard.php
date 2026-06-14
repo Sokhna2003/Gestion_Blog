@@ -30,7 +30,7 @@
                 <div class="flex items-center gap-2 text-[10px] font-bold text-gray-800">
                     <i class="fa-solid fa-pen-to-square text-indigo-600"></i> Articles en Lignes
                 </div>
-                <h3 class="text-2xl font-black text-gray-900 mt-2">24</h3>
+                <h3 class="text-2xl font-black text-gray-900 mt-2"><?= $totalEnLigne ?></h3>
             </div>
             <div>
                 <div class="w-full bg-gray-100 h-1.5 rounded-full overflow-hidden">
@@ -45,7 +45,7 @@
                 <div class="flex items-center gap-2 text-[10px] font-bold text-gray-800">
                     <i class="fa-solid fa-eye text-indigo-600"></i> Vues de mes Articles
                 </div>
-                <h3 class="text-2xl font-black text-gray-900 mt-2">1.5K</h3>
+                <h3 class="text-2xl font-black text-gray-900 mt-2"><?= $totalVues ?></h3>
             </div>
             <div>
                 <div class="w-full bg-gray-100 h-1.5 rounded-full overflow-hidden">
@@ -75,7 +75,7 @@
                 <div class="flex items-center gap-2 text-[10px] font-bold text-gray-800">
                     <i class="fa-solid fa-user-clock text-indigo-600"></i> En attente de leAdmin
                 </div>
-                <h3 class="text-2xl font-black text-gray-900 mt-2">2</h3>
+                <h3 class="text-2xl font-black text-gray-900 mt-2"><?= $totalEnAttente ?></h3>
             </div>
             <div>
                 <div class="w-full bg-gray-100 h-1.5 rounded-full overflow-hidden">
@@ -101,36 +101,29 @@
                     </tr>
                 </thead>
                 <tbody class="divide-y divide-gray-200 text-sm text-gray-700">
-                    
+                    <?php if (empty($articles)): ?>
+                        <tr>
+                            <td colspan="5" class="p-4 text-center text-gray-500">Vous n'avez soumis aucun article pour le moment</td>
+                        </tr>
+                    <?php else: ?>
+                    <?php foreach ($articles as $art): ?>
                     <tr class="hover:bg-gray-50/50 transition">
-                        <td class="p-4 font-semibold text-gray-900">10 astuces de design UI</td>
-                        <td class="p-4 text-gray-550">Guidez l'œil avec des tailles</td>
-                        <td class="p-4">10/05/2026</td>
-                        <td class="p-4 text-center font-medium">1.2</td>
+                        <td class="p-4 font-semibold text-gray-900"><?= htmlspecialchars($art['titre']) ?></td>
+                        <td class="p-4 text-gray-550"><?= htmlspecialchars($art['contenu']) ?></td>
+                        <td class="p-4"><?= date('d/m/Y', strtotime($art['date_publication'])) ?></td>
+                        <td class="p-4 text-center font-medium"><?= $art['vues'] ?></td>
                         <td class="p-4 text-center">
-                            <span class="bg-[#00FF00] text-black text-xs font-bold px-4 py-1 rounded-full inline-block shadow-sm">Publier</span>
+                            <?php if ($art['statut'] === 'publie'): ?>
+                                <span class="bg-[#00FF00] text-black text-xs font-bold px-4 py-1 rounded-full inline-block shadow-sm">Publier</span>
+                            <?php elseif ($art['statut'] === 'en_attente'): ?>
+                                <span class="bg-[#FFA500] text-white text-xs font-bold px-3 py-1 rounded-full inline-block shadow-sm">En attente de publication</span>
+                            <?php else: ?>
+                                <span class="bg-gray-500 text-white text-xs font-bold px-4 py-1 rounded-full inline-block shadow-sm">Archivé</span>
+                            <?php endif; ?>
                         </td>
                     </tr>
-
-                    <tr class="hover:bg-gray-50/50 transition">
-                        <td class="p-4 font-semibold text-gray-900">10 astuces de design UI</td>
-                        <td class="p-4 text-gray-550">Guidez l'œil avec des tailles</td>
-                        <td class="p-4">10/05/2026</td>
-                        <td class="p-4 text-center font-medium">0</td>
-                        <td class="p-4 text-center">
-                            <span class="bg-[#FFA500] text-white text-xs font-bold px-3 py-1 rounded-full inline-block shadow-sm">En attente de publication</span>
-                        </td>
-                    </tr>
-
-                    <tr class="hover:bg-gray-50/50 transition">
-                        <td class="p-4 font-semibold text-gray-900">10 astuces de design UI</td>
-                        <td class="p-4 text-gray-550">Guidez l'œil avec des tailles</td>
-                        <td class="p-4">10/05/2026</td>
-                        <td class="p-4 text-center font-medium">0</td>
-                        <td class="p-4 text-center">
-                            <span class="bg-[#00FF00] text-black text-xs font-bold px-4 py-1 rounded-full inline-block shadow-sm">Publier</span>
-                        </td>
-                    </tr>
+                    <?php endforeach; ?>
+                <?php endif; ?>
 
                 </tbody>
             </table>
