@@ -26,6 +26,31 @@ function redirectTo(string $controller, string $action):void{
 
 }
 
+function countTable(string $table){
+    $sql="SELECT COUNT(*) as total FROM $table";
+   return executeSelect($sql,[],true)["total"];
+}
+
+function countArticles(?string $statut = null, ?int $id_utilisateur = null): int {
+    $sql = "SELECT COUNT(*) as total FROM articles WHERE 1=1";
+    $params = [];
+
+    // Si on demande un statut précis (ex: 'publie' ou 'en_attente')
+    if ($statut !== null) {
+        $sql .= " AND statut = :statut";
+        $params['statut'] = $statut;
+    }
+
+    // Si on demande les articles d'un auteur précis
+    if ($id_utilisateur !== null) {
+        $sql .= " AND id_utilisateur = :id_user";
+        $params['id_user'] = $id_utilisateur;
+    }
+
+    return (int)executeSelect($sql, $params, true)["total"];
+}
+
+
 function isConnected(){
     return isset($_SESSION["user"]);
 }

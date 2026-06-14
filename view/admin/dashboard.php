@@ -11,7 +11,7 @@
                     class="flex items-center gap-2 text-[11px] font-bold uppercase tracking-wider text-indigo-200">
                     <i class="fa-solid fa-user text-xs"></i> Nombre Utilisateurs
                 </div>
-                <h3 class="text-2xl font-black mt-2">25</h3>
+                <h3 class="text-2xl font-black mt-2"><?= $totalUsers ?></h3>
             </div>
             <div class="absolute inset-x-0 bottom-0 h-12 wave-bg"></div>
         </div>
@@ -23,7 +23,7 @@
                     class="flex items-center gap-2 text-[11px] font-bold uppercase tracking-wider text-gray-400">
                     <i class="fa-solid fa-file-invoice text-xs text-indigo-500"></i> Articles en Attente
                 </div>
-                <h3 class="text-2xl font-black text-gray-900 mt-2">10</h3>
+                <h3 class="text-2xl font-black text-gray-900 mt-2"><?= $totalAttente ?></h3>
             </div>
             <div class="absolute inset-x-0 bottom-0 h-12 wave-bg-light"></div>
         </div>
@@ -91,70 +91,26 @@
     <div class="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
         <h4 class="text-lg font-bold text-gray-900 mb-5">File de Moderation Urgentes</h4>
         <div class="space-y-3">
-
-            <div
-                class="flex items-center justify-between p-3 bg-gray-50 rounded-lg border-l-[3px] border-indigo-600 gap-4 shadow-sm">
+    <?php if (empty($fileModeration)): ?>
+        <p class="text-sm text-gray-500 text-center py-4">Excellente nouvelle ! Aucun article n'est en attente de modération.</p>
+    <?php else: ?>
+        <?php foreach ($fileModeration as $item): ?>
+            <div class="flex items-center justify-between p-3 bg-gray-50 rounded-lg border-l-[3px] border-indigo-600 gap-4 shadow-sm">
                 <div class="flex items-center gap-4 min-w-0">
-                    <img src="https://unsplash.com" alt="Avatar"
-                        class="w-10 h-10 rounded-full object-cover shrink-0">
+                    <img src="<?= htmlspecialchars($item['photo']) ?>" alt="Avatar" class="w-10 h-10 rounded-full object-cover shrink-0">
                     <div class="truncate text-xs sm:text-sm">
-                        <span class="font-bold text-gray-900 mr-2">Awa Fall</span>
-                        <span class="text-gray-500">Un lecteur a écrit un commentaire qui a été signalé comme
-                            <span class="italic text-gray-600">"Contenu inapproprié"</span></span>
+                        <span class="font-bold text-gray-900 mr-2"><?= htmlspecialchars($item['prenom'] . ' ' . $item['nom']) ?></span>
+                        <span class="text-gray-500">A soumis l'article : <span class="italic text-gray-600 font-medium">"<?= htmlspecialchars($item['titre']) ?>"</span> qui est en attente.</span>
                     </div>
                 </div>
                 <div class="flex gap-1.5 shrink-0 text-[11px] font-bold">
-                    <button
-                        class="px-3 py-1.5 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 transition">Valider</button>
-                    <button
-                        class="px-3 py-1.5 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 transition">Rejeter</button>
-                    <button
-                        class="px-3 py-1.5 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 transition">Suspendre</button>
+                    <button class="px-3 py-1.5 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 transition cursor-pointer">Valider</button>
+                    <button class="px-3 py-1.5 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 transition cursor-pointer">Rejeter</button>
                 </div>
             </div>
+        <?php endforeach; ?>
+    <?php endif; ?>
+</div>
 
-            <div
-                class="flex items-center justify-between p-3 bg-gray-50 rounded-lg border-l-[3px] border-indigo-600 gap-4 shadow-sm">
-                <div class="flex items-center gap-4 min-w-0">
-                    <img src="https://unsplash.com" alt="Avatar"
-                        class="w-10 h-10 rounded-full object-cover shrink-0">
-                    <div class="truncate text-xs sm:text-sm">
-                        <span class="font-bold text-gray-900 mr-2">Pape Ba</span>
-                        <span class="text-gray-500">Un auteur a écrit un article entier qui pose problème et qui
-                            a été signalé pour vérification</span>
-                    </div>
-                </div>
-                <div class="flex gap-1.5 shrink-0 text-[11px] font-bold">
-                    <button
-                        class="px-3 py-1.5 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 transition">Valider</button>
-                    <button
-                        class="px-3 py-1.5 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 transition">Rejeter</button>
-                    <button
-                        class="px-3 py-1.5 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 transition">Suspendre</button>
-                </div>
-            </div>
-
-            <div
-                class="flex items-center justify-between p-3 bg-gray-50 rounded-lg border-l-[3px] border-indigo-600 gap-4 shadow-sm">
-                <div class="flex items-center gap-4 min-w-0">
-                    <img src="https://unsplash.com" alt="Avatar"
-                        class="w-10 h-10 rounded-full object-cover shrink-0">
-                    <div class="truncate text-xs sm:text-sm">
-                        <span class="font-bold text-gray-900 mr-2">Awa Fall</span>
-                        <span class="text-gray-500">Un lecteur a écrit un commentaire qui a été signalé comme
-                            <span class="italic text-gray-600">"Contenu inapproprié"</span></span>
-                    </div>
-                </div>
-                <div class="flex gap-1.5 shrink-0 text-[11px] font-bold">
-                    <button
-                        class="px-3 py-1.5 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 transition">Valider</button>
-                    <button
-                        class="px-3 py-1.5 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 transition">Rejeter</button>
-                    <button
-                        class="px-3 py-1.5 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 transition">Suspendre</button>
-                </div>
-            </div>
-
-        </div>
     </div>
 </main>

@@ -1,4 +1,6 @@
 <?php
+require_once ROOT."/model/adminModel.php";
+
 // On vérifie que l'utilisateur est connecté et qu'il est bien admin
 auth();
 if (!hasRole('admin')) {
@@ -7,8 +9,16 @@ if (!hasRole('admin')) {
 
 $dashboard = function() {
     $errors = [];
-    // Chargement de la vue du dashboard du admin
-    loadView("admin/dashboard", ["errors" => $errors], "side");
+    $totalUsers = countTable("utilisateurs");
+    $totalAttente = countArticles('en_attente');
+    $fileModeration = getArticlesAModerer();
+
+    loadView("admin/dashboard", [
+        "errors" => $errors,
+        "totalUsers" => $totalUsers,
+        "totalAttente" => $totalAttente,
+        "fileModeration" => $fileModeration
+    ], "side");
 };
 
 $actions = [
