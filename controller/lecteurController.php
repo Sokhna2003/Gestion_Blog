@@ -1,4 +1,6 @@
 <?php
+require_once ROOT."/model/lecteurModel.php";
+
 // On vérifie d'abord si l'utilisateur a le droit d'être ici
 auth();
 if (!hasRole('lecteur')) {
@@ -7,8 +9,14 @@ if (!hasRole('lecteur')) {
 
 $dashboard = function() {
     $errors = [];
-    // Chargement de la vue du dashboard du lecteur
-    loadView("lecteur/dashboard", ["errors" => $errors], "side");
+    $articlesEnregistres = getArticlesEnregistres();
+    $totalFavoris = countFavoris();
+
+    loadView("lecteur/dashboard", [
+        "errors" => $errors,
+        "articles" => $articlesEnregistres,
+        "totalFavoris" => $totalFavoris
+    ], "side");
 };
 
 $actions = [
