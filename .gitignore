@@ -1,2 +1,2 @@
-config/config.php
+bd/database.php
 db.sql
