@@ -12,9 +12,9 @@ $dashboard = function() {
     $id_user = $_SESSION["user"]["id_utilisateur"]; // Récupération de l'ID de l'auteur connecté
 
     $articles = getArticlesByAuteur($id_user);
-    $totalEnLigne = countArticlesEnLigne($id_user);
+    $totalEnLigne = countArticles('publie', $id_user);
     $totalVues = sumVuesArticles($id_user);
-    $totalEnAttente = countArticlesEnAttente($id_user);
+    $totalEnAttente = countArticles('en_attente', $id_user);
 
     loadView("auteur/dashboard", [
         "errors" => $errors,

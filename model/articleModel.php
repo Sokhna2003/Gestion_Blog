@@ -7,13 +7,6 @@ function getArticlesByAuteur(int $id_utilisateur): array {
     return executeSelect($sql, ["id" => $id_utilisateur], false);
 }
 
-// Compter le nombre d'articles en ligne (publiés) d'un auteur
-function countArticlesEnLigne(int $id_utilisateur): int {
-    $sql = "SELECT COUNT(*) as total FROM articles WHERE id_utilisateur = :id AND statut = 'publie'";
-    $result = executeSelect($sql, ["id" => $id_utilisateur], true);
-    return (int)($result['total'] ?? 0);
-}
-
 // Faire la somme des vues de tous les articles d'un auteur
 function sumVuesArticles(int $id_utilisateur): int {
     $sql = "SELECT SUM(vues) as total FROM articles WHERE id_utilisateur = :id";
@@ -21,9 +14,3 @@ function sumVuesArticles(int $id_utilisateur): int {
     return (int)($result['total'] ?? 0);
 }
 
-// Compter les articles en attente de validation pour cet auteur
-function countArticlesEnAttente(int $id_utilisateur): int {
-    $sql = "SELECT COUNT(*) as total FROM articles WHERE id_utilisateur = :id AND statut = 'en_attente'";
-    $result = executeSelect($sql, ["id" => $id_utilisateur], true);
-    return (int)($result['total'] ?? 0);
-}
