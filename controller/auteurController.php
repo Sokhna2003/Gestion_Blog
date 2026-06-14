@@ -1,14 +1,14 @@
 <?php
-// On vérifie que l'utilisateur est connecté et qu'il est bien admin
+//  On vérifie que l'utilisateur est connecté et qu'il est bien auteur
 auth();
-if (!hasRole('admin')) {
+if (!hasRole('auteur')) {
     redirectTo("auth", "login");
 }
 
 $dashboard = function() {
     $errors = [];
-    // Chargement de la vue du dashboard du admin
-    loadView("admin/dashboard", ["errors" => $errors], "side");
+    // Chargement de la vue du dashboard de l'auteur
+    loadView("auteur/dashboard", ["errors" => $errors], "side");
 };
 
 $actions = [
@@ -20,6 +20,6 @@ $action = $_REQUEST["action"] ?? "dashboard";
 if (array_key_exists($action, $actions)) {
     $actions[$action]();
 } else {
-    echo "Action introuvable dans AdminController";
+    echo "Action introuvable dans AuteurController";
     exit();
 }
