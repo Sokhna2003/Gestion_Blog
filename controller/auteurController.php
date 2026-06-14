@@ -1,4 +1,6 @@
 <?php
+require_once ROOT."/model/articleModel.php";
+
 //  On vérifie que l'utilisateur est connecté et qu'il est bien auteur
 auth();
 if (!hasRole('auteur')) {
@@ -7,8 +9,20 @@ if (!hasRole('auteur')) {
 
 $dashboard = function() {
     $errors = [];
-    // Chargement de la vue du dashboard de l'auteur
-    loadView("auteur/dashboard", ["errors" => $errors], "side");
+    $id_user = $_SESSION["user"]["id_utilisateur"]; // Récupération de l'ID de l'auteur connecté
+
+    $articles = getArticlesByAuteur($id_user);
+    $totalEnLigne = countArticlesEnLigne($id_user);
+    $totalVues = sumVuesArticles($id_user);
+    $totalEnAttente = countArticlesEnAttente($id_user);
+
+    loadView("auteur/dashboard", [
+        "errors" => $errors,
+        "articles" => $articles,
+        "totalEnLigne" => $totalEnLigne,
+        "totalVues" => $totalVues,
+        "totalEnAttente" => $totalEnAttente
+    ], "side");
 };
 
 $actions = [
