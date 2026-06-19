@@ -70,7 +70,7 @@
                 <a href="<?php echo path('auteur', 'dashboard'); ?>" class="flex items-center gap-4 px-4 py-3 bg-white/10 rounded-lg font-semibold text-white">
                     <i class="fa-solid fa-house w-5 text-sm"></i> Dashboard
                 </a>
-                <a href="#" class="flex items-center gap-4 px-4 py-3 hover:bg-white/5 rounded-lg text-indigo-100 hover:text-white font-medium">
+                <a href="<?= path('auteur', 'listeArticles'); ?>" class="flex items-center gap-4 px-4 py-3 hover:bg-white/5 rounded-lg text-indigo-100 hover:text-white font-medium">
                     <i class="fa-solid fa-pen-to-square w-5 text-sm"></i> Mes Articles
                 </a>
 
