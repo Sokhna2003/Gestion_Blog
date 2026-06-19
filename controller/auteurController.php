@@ -25,8 +25,19 @@ $dashboard = function() {
     ], "side");
 };
 
+$listeArticles = function() {
+    $id_user = $_SESSION["user"]["id_utilisateur"];
+    
+    $articles = getArticlesByAuteur($id_user);
+
+    loadView("auteur/liste", [
+        "articles" => $articles
+    ], "side");
+};
+
 $actions = [
-    "dashboard" => $dashboard
+    "dashboard" => $dashboard,
+    "listeArticles" => $listeArticles
 ];
 
 $action = $_REQUEST["action"] ?? "dashboard";
