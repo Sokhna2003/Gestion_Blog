@@ -3,12 +3,12 @@ $controllers=[
     "admin"=>"admin",
     "auteur"=>"auteur",
     "lecteur"=>"lecteur",
-    "defaut"=>"defaut",
-    "auth"=>"auth"
+    "home"=>"home",
+    "auth"=>"auth",
 
 ];
 
- $controller=$_REQUEST["controller"]??"auth";
+ $controller=$_REQUEST["controller"]??"home";
  
  if (array_key_exists($controller, $controllers)) {
      $path=ROOT."controller/".$controllers[$controller]."Controller.php";
