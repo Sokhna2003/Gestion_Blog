@@ -26,6 +26,9 @@
                 <?php endif; ?>
             </div>
 
+            <input type="hidden" name="controller" value="admin">
+            <input type="hidden" name="action" value="ajoutCategorie">
+
             <button type="submit" name="add_category" 
                 class="w-full bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-bold py-3 rounded-xl shadow-sm transition cursor-pointer text-center uppercase tracking-wider">
                 Enregistrer la catégorie
