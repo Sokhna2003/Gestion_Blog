@@ -29,3 +29,10 @@ function executeSelect(string $sql,array $data=[],$one=false) {
         return $result ;
   
 }
+
+function executeUpdate(string $sql,array $data){
+    $conn=openConnexion();
+    $statement = $conn->prepare($sql);
+    $statement->execute($data);
+    closeConnexion($conn);
+}

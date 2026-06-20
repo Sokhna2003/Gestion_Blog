@@ -27,7 +27,12 @@ function getFilteredCategories(?string $search = null, ?string $date = null): ar
 
 function insertCategorie(string $nom_categorie): bool {
     $sql = "INSERT INTO categories (nom_categorie) VALUES (:nom)";
-    return executeUpdate($sql, ["nom" => $nom_categorie]) > 0;
+    $resultat = executeUpdate($sql, ["nom" => $nom_categorie]);
+    if ($resultat !== false) {
+        return true;
+    }
+    
+    return false;
 }
 
 function deleteCategorie(int $id_categorie): bool {

@@ -37,13 +37,14 @@ $categories = function() {
     // Récupération des données filtrées
     $listCategories = getFilteredCategories($search, $date);
 
-    loadView("admin/categories_liste", [
+    loadView("admin/listeCategories", [
         "errors" => $errors,
         "categories" => $listCategories,
         "search" => $search,
         "date_filtre" => $date
     ], "side");
 };
+
 $ajoutCategorie = function() {
     $errors = [];
 
@@ -52,16 +53,23 @@ $ajoutCategorie = function() {
         
         if (validate($errors)) {
             $nom = trim($_POST["nom_categorie"]);
-            $success = insertCategorie($nom);
-            if ($success) {
-                redirectTo("admin", "categories"); 
+            
+            $verification = getFilteredCategories($nom);
+            
+            if (!empty($verification)) {
+                $errors["nom_categorie"] = "Cette catégorie existe déjà.";
             } else {
-                $errors["nom_categorie"] = "Erreur lors de l'ajout";
+                 $success = insertCategorie($nom);
+                if ($success) {
+                    redirectTo("admin", "categories"); 
+                } else {
+                    $errors["nom_categorie"] = "Erreur lors de l'ajout.";
+                }
             }
          }
     }
 
-    loadView("admin/categories_ajout", [
+    loadView("admin/ajoutCategories", [
         "errors" => $errors
     ], "side");
 };
