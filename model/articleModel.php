@@ -14,3 +14,17 @@ function sumVuesArticles(int $id_utilisateur): int {
     return (int)($result['total'] ?? 0);
 }
 
+function insertArticle(string $titre, string $contenu, string $categorie,string $image_url, int $id_utilisateur){
+    $sql = "INSERT INTO articles (titre, contenu, categorie, image, statut, id_utilisateur) 
+            VALUES (:titre, :contenu, :categorie, :image, 'en_attente', :id_user)";
+    
+    $data = [
+        "titre" => $titre,
+        "contenu" => $contenu,
+        "categorie" => $categorie,
+        "image" => $image_url,
+        "id_user" => $id_utilisateur
+    ];
+    return executeUpdate($sql, $data);
+}
+

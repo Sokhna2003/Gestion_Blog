@@ -1,5 +1,6 @@
 <?php
 require_once ROOT."/model/articleModel.php";
+require_once ROOT."/model/categorieModel.php";
 
 //  On vérifie que l'utilisateur est connecté et qu'il est bien auteur
 auth();
@@ -35,9 +36,51 @@ $listeArticles = function() {
     ], "side");
 };
 
+$ajoutArticle = function() {
+    $errors = [];
+
+    if (isset($_POST["add_article"])) {
+        $errors = validDataArticle($_POST);
+        
+        if ($_POST["categorie"] === "autres") {
+            // Comportement si "autres" est sélectionné
+        }
+        if (validate($errors)) {
+            $titre = trim($_POST['titre']);
+            $contenu = trim($_POST['contenu']);
+            $categorie = trim($_POST['categorie']);
+            $id_utilisateur = $_SESSION["user"]["id_utilisateur"];
+            $nom_image = time() . '_' . $_FILES['image_file']['name'];
+            if (move_uploaded_file($_FILES['image_file']['tmp_name'], ROOT . "public/uploads/" . $nom_image)) {
+                $image_url = WEBROOT . "uploads/" . $nom_image;
+            }
+            else {
+                $image_url = 'https://unsplash.com';
+            }
+
+            $success = insertArticle($titre, $contenu, $categorie,$image_url, $id_utilisateur);
+            
+            if ($success !== false) {
+                redirectTo("auteur", "listeArticles");
+            } else {
+                $errors["global"] = "Erreur lors de l'enregistrement de l'article en base de données.";
+            }
+
+        }
+        
+    }
+    $categories = getAllCategories();
+
+    loadView("auteur/ajout", [
+        "errors" => $errors,
+        "categories" => $categories,
+    ], "side");
+};
+
 $actions = [
     "dashboard" => $dashboard,
-    "listeArticles" => $listeArticles
+    "listeArticles" => $listeArticles,
+    "ajoutArticle" => $ajoutArticle
 ];
 
 $action = $_REQUEST["action"] ?? "dashboard";
