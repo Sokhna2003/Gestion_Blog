@@ -6,9 +6,9 @@
             <h2 class="text-2xl font-bold text-gray-900">Bienvenue Moussa</h2>
             <p class="text-sm text-gray-400">Rédigez de nouveaux contenus et suivez l'impact de vos publications.</p>
             <div class="pt-2">
-                <button class="bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-semibold px-4 py-2.5 rounded-xl shadow-sm transition">
-                    Rediger un article
-                </button>
+                <a href="<?= path('auteur', 'ajoutArticle') ?>" class="bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-bold px-4 py-2.5 rounded-lg shadow-sm transition">
+                    Rediger un Article
+                </a>
             </div>
         </div>
         <div class="hidden md:block w-36 h-28 mr-6 text-indigo-200 shrink-0">

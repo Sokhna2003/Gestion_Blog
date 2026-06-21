@@ -43,7 +43,7 @@
     <!--  TITRE DE SECTION ET BOUTON RÉDIGER -->
     <div class="flex justify-between items-center px-1">
         <h2 class="text-2xl font-bold text-gray-900 tracking-tight">Listes de mes Articles</h2>
-        <a href="#" class="bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-bold px-4 py-2.5 rounded-lg shadow-sm transition">
+        <a href="<?= path('auteur', 'ajoutArticle') ?>" class="bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-bold px-4 py-2.5 rounded-lg shadow-sm transition">
             Rediger Article
         </a>
     </div>
