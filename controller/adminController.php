@@ -74,10 +74,30 @@ $ajoutCategorie = function() {
     ], "side");
 };
 
+$articles = function() {
+    $errors = [];
+
+    if (isset($_GET['approve_id'])) {
+        approuverArticle((int)$_GET['approve_id']);
+        redirectTo("admin", "articles");
+    }
+    if (isset($_GET['reject_id'])) {
+        rejeterArticle((int)$_GET['reject_id']);
+        redirectTo("admin", "articles");
+    }
+    $allArticles = getAllArticles();
+
+    loadView("admin/listeArticle", [
+        "errors" => $errors,
+        "articles" => $allArticles
+    ], "side");
+};
+
 $actions = [
     "dashboard" => $dashboard,
     "categories" => $categories,
-    "ajoutCategorie" => $ajoutCategorie
+    "ajoutCategorie" => $ajoutCategorie,
+    "articles" => $articles
 ];
 
 $action = $_REQUEST["action"] ?? "dashboard";

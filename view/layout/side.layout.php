@@ -58,7 +58,7 @@
                 <a href="<?php echo path('admin', 'categories'); ?>" class="flex items-center gap-4 px-4 py-3 bg-white/10 rounded-lg font-semibold text-white">
                     <i class="fa-solid fa-tags w-5 text-sm"></i> Catégories
                 </a>
-                <a href="#" class="flex items-center gap-4 px-4 py-3 hover:bg-white/5 rounded-lg text-indigo-100 hover:text-white font-medium">
+                <a href="<?= path('admin', 'articles') ?>" class="flex items-center gap-4 px-4 py-3 hover:bg-white/5 rounded-lg text-indigo-100 hover:text-white font-medium">
                     <i class="fa-solid fa-pen-to-square w-5 text-sm"></i> Articles
                 </a>
                 <a href="#" class="flex items-center gap-4 px-4 py-3 hover:bg-white/5 rounded-lg text-indigo-100 hover:text-white font-medium">
